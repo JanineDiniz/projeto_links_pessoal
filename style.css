@@ -1,0 +1,179 @@
+:root{
+  --text-color: rgb(0, 0, 0);
+  --bg-url: url(assets/bg-desktop.svg);
+  --stroke-color: rgba(92, 43, 43, 0.5);
+  --surface-color: rgba(223, 86, 86, 0.05);
+  --surface-color-hover: rgba(185, 85, 85, 0.349);
+  --highlight-color: rgba(199, 71, 71, 0.1);
+  --switch-bg: url(assets/sun.svg);
+}
+.light{
+  --text-color:rgb(4, 39, 80);
+  --bg-url: url(assets/bg-desktop-light.jpg);
+  --stroke-color: rgba(56, 56, 56, 0.5);
+  --surface-color: rgba(44, 107, 224, 0.068);
+  --surface-color-hover: rgba(88, 149, 206, 0.521);
+  --highlight-color: rgba(79, 146, 201, 0.548);
+  --switch-bg: url(assets/moon-stars.svg);
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  /* background-image: url(assets/bg-mobile.jpg) ;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover; */
+  /* background: color image repeat position/size; */
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
+}
+
+body *{
+  font-family: 'Ysabeau Infant', sans-serif;
+  color: var(--text-color);
+}
+
+#container{
+  width: 100%;
+  max-width: 588px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/* PROFILE */
+/* se o elemento filho for inline, o elemento pai pode receber align: center; */
+#profile{
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img{
+  width: 112px;
+  /* elementos inline n centralizam c/ auto - devem ser tranformados em block ou alinhados pelo elemento pai
+  display: block;
+  margin: auto; */
+  border-radius: 50%;
+  background-color: rgb(153, 214, 238);
+  box-shadow: 0px 0px 5px rgba(87, 87, 87, 0.979);
+}
+#profile p{
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* SWITCH */
+#switch{
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+  
+}
+#switch button{
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  animation: slide-out 0.2s;
+}
+#switch button:hover{
+  outline: 8px solid var(--highlight-color);
+}
+.light #switch button{
+  animation: slide-in 0.2s forwards;
+}
+#switch span{
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* LINKS */
+ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 0;
+}
+ul li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--surface-color);
+    border:  1px solid var(--stroke-color);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+/* pseudo-selector */
+ul li a:hover{
+    background: var(--surface-color-hover);
+    border:  1.5px solid var(--text-color);
+}
+
+/* SOCIAL LINKS */
+#social_links{
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;
+}
+#social_links a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50px;
+  transition: background .2s;
+}
+
+#social_links a:hover{
+  background: var(--highlight-color);
+}
+
+/* FOOTER */
+footer{
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes slide-in {
+  from{
+    left: 0;
+  }
+  to{
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
+  }
+}
